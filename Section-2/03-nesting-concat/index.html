@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nesting and Concat</title>
+  </head>
+  <body>
+    <h1>Nesting and Concat</h1>
+
+    <script>
+      let x;
+      const fruits = ['apple', 'mango', 'orange'];
+      const berries = ['strawberry', 'blueberry', 'rasberry'];
+
+      //nesting array method
+      //fruits.push(berries);
+
+      //access an element in the second array
+      //x = fruits[3][1]; output blueberry
+
+      // new set of array
+      const allFruits = [fruits, berries];
+      x = allFruits[1][0]; //output strawberry, it access the second array
+      // and display the strawberry inside of the second array
+
+      //putting both array all together in a single array
+      x = fruits.concat(berries);
+
+      //another way to put all together using spread operator (...)
+      x = [...fruits, ...berries];
+
+      //flatten a nested array into one single array
+      const arr = [1, 2, [3, 4], 5, [6, 7], 8];
+      x = arr.flat(); //output [1, 2, 3, 4, 5, 6 ,7 ,8]
+
+      //static method of an array object
+      // check if the value is an array
+      x = Array.isArray(fruits); // output true because fruits is an array
+
+      //making the value an element inside of an array
+      x = Array.from('12345'); //output ['1', '2', '3', '4', '5']
+
+      const a = 1;
+      const b = 2;
+      const c = 3;
+
+      //making the variables put together inside of an array
+      x = Array.of(a, b, c); //output [1, 2, 3]
+
+      console.log(x);
+    </script>
+  </body>
+</html>
