@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Global function and scope</h1>
+
+    <script>
+      //Global scope
+
+      const x = 100;
+
+      //function scope
+      function add() {
+        const x = 70;
+        const y = 50;
+
+        console.log(x + y);
+      }
+
+      add();
+    </script>
+  </body>
+</html>

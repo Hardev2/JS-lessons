@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07-destructuring-naming</title>
+  </head>
+  <body>
+    <h1>destructuring and naming</h1>
+
+    <script>
+      const firstName = 'john';
+      const lastNAME = 'doe';
+      const age = 23;
+
+      const person = {
+        firstName,
+        lastNAME,
+        age,
+      };
+
+      console.log(person);
+
+      const todo = {
+        id: 1,
+        title: 'Buy beer',
+        user: {
+          name: 'jess',
+        },
+      };
+
+      //destructuring
+
+      const {
+        id,
+        title,
+        user: { name },
+      } = todo;
+
+      console.log(name);
+
+      //destructuring array
+
+      const numbers = [12, 13, 14, 15, 16];
+
+      const [first, second, ...restNum] = numbers;
+
+      console.log(first, second);
+
+      //rest operator
+      console.log(first, second, restNum);
+    </script>
+  </body>
+</html>

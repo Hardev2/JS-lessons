@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08-json-intro</title>
+  </head>
+  <body>
+    <h1>json intro</h1>
+
+    <script>
+      const post = {
+        id: 1,
+        title: 'Post one',
+        body: 'This is the body',
+      };
+
+      //convert into JSON
+
+      const str = JSON.stringify(post);
+      console.log(str);
+      //string into parse which is the string will be going back into object
+      const obj = JSON.parse(str);
+      console.log(obj);
+
+      const posts = [
+        {
+          id: 1,
+          title: 'Post one',
+          body: 'This is the body',
+        },
+        {
+          id: 2,
+          title: 'Post one',
+          body: 'This is the body',
+        },
+        {
+          id: 3,
+          title: 'Post one',
+          body: 'This is the body',
+        },
+      ];
+
+      const str2 = JSON.stringify(posts);
+
+      console.log(str2);
+    </script>
+  </body>
+</html>

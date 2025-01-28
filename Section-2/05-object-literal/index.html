@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object literal</title>
+  </head>
+  <body>
+    <h1>Object literal</h1>
+
+    <script>
+      let x;
+
+      const person = {
+        name: 'Harvey',
+        age: 20,
+        isAdmin: true,
+        address: {
+          street: 'N. bacalso',
+          city: 'cebu',
+          state: 'cebu city',
+        },
+        hobbies: ['music', 'games', 'basketball'],
+      };
+
+      x = person.address.street;
+      x = person.hobbies;
+      x = person.hobbies[0];
+
+      person.name = 'jess';
+
+      x = person;
+
+      //delete key in the object
+
+      delete person.age;
+
+      x = person;
+
+      //add property in the object
+
+      person.gamer = true;
+
+      x = person;
+
+      person.greet = function () {
+        console.log(`hello, my name is ${this.name}`);
+      };
+
+      person.greet();
+
+      console.log(x);
+    </script>
+  </body>
+</html>

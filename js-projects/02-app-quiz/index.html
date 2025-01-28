@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>APP QUIZ</title>
+  </head>
+  <body>
+    <div class="app">
+      <h1>Simple Quiz</h1>
+      <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+          <!-- <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button> -->
+        </div>
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+
+    <script>
+      const questions = [
+        {
+          question: 'Which is largest animal in the world?',
+          answers: [
+            { text: 'Shark', correct: false },
+            { text: 'Blue whale', correct: true },
+            { text: 'Elephant', correct: false },
+            { text: 'Giraffe', correct: false },
+          ],
+        },
+        {
+          question: 'Which is the smallest country in the world?',
+          answers: [
+            { text: 'Vatican City', correct: true },
+            { text: 'Bhutan', correct: false },
+            { text: 'Nepal', correct: false },
+            { text: 'Shri Lanka', correct: false },
+          ],
+        },
+        {
+          question: 'Who is the greatest Robot inventor?',
+          answers: [
+            { text: 'Mark Zuckerberg', correct: false },
+            { text: 'Steve Job', correct: false },
+            { text: 'Ellon Musk', correct: true },
+            { text: 'John Snow', correct: false },
+          ],
+        },
+        {
+          question: 'Greatest hit man in the movie?',
+          answers: [
+            { text: 'John Wick', correct: true },
+            { text: 'Maria Smith', correct: false },
+            { text: 'Jacky', correct: false },
+            { text: 'Conan', correct: false },
+          ],
+        },
+      ];
+
+      const questionElement = document.getElementById('question');
+      const answerButtons = document.getElementById('answer-buttons');
+      const nextButton = document.getElementById('next-btn');
+
+      //current index of question is 0 first question
+      let currentQuestionIndex = 0;
+      let score = 0;
+
+      function startQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        nextButton.innerHTML = 'Next';
+        showQuestion();
+      }
+
+      function showQuestion() {
+        resetState();
+        let currentQuestion = questions[currentQuestionIndex]; //this will be get the curren question which is in index 0
+        let questionNo = currentQuestionIndex + 1; // by adding + 1 so that the start of question is number 1.
+        questionElement.innerHTML =
+          questionNo + '. ' + currentQuestion.question; //this will be display the current question that being get in the array
+
+        currentQuestion.answers.forEach((answer) => {
+          const button = document.createElement('button'); // this will create a button tag.
+          button.innerHTML = answer.text; // call the parameter answer and then concat it with the answer text inside of an array.
+          button.classList.add('btn');
+          answerButtons.appendChild(button); // make the button be children in the answer-button div in the html
+          if (answer.correct) {
+            button.dataset.correct = answer.correct;
+          }
+          button.addEventListener('click', selectAnswer);
+        });
+      }
+
+      function resetState() {
+        nextButton.style.display = 'none';
+        while (answerButtons.firstChild) {
+          answerButtons.removeChild(answerButtons.firstChild);
+        }
+      }
+
+      function selectAnswer(e) {
+        const selectedBtn = e.target;
+        const isCorrect = selectedBtn.dataset.correct === 'true';
+        if (isCorrect) {
+          selectedBtn.classList.add('correct');
+          score++;
+        } else {
+          selectedBtn.classList.add('incorrect');
+        }
+        Array.from(answerButtons.children).forEach((button) => {
+          if (button.dataset.correct === 'true') {
+            button.classList.add('correct');
+          }
+          button.disabled = true;
+        });
+        nextButton.style.display = 'block';
+      }
+
+      function showScore() {
+        resetState();
+        questionElement.innerHTML = `Your score ${score} out of ${questions.length}!`;
+        nextButton.innerHTML = 'Play Again';
+        nextButton.style.display = 'block';
+      }
+      function handleNextButton() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          showQuestion();
+        } else {
+          showScore();
+        }
+      }
+      nextButton.addEventListener('click', () => {
+        if (currentQuestionIndex < questions.length) {
+          handleNextButton();
+        } else {
+          startQuiz();
+        }
+      });
+      startQuiz();
+    </script>
+  </body>
+</html>

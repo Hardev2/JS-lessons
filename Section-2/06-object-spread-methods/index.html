@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06-object-spread-methods</title>
+  </head>
+  <body>
+    <h1>object spread methods</h1>
+
+    <script>
+      let x;
+
+      const todo = new Object();
+
+      todo.id = 1;
+      todo.name = 'Buy beer';
+      todo.completed = false;
+
+      x = todo;
+
+      //nested object
+
+      const person = {
+        address: {
+          coords: {
+            lat: 42.52,
+            lng: -231.3,
+          },
+        },
+      };
+
+      x = person.address.coords.lat;
+
+      //combine two object using spread operator
+
+      const obj1 = { a: 1, b: 2 };
+      const obj2 = { c: 3, d: 4 };
+
+      const obj3 = { ...obj1, ...obj2 };
+
+      x = obj3; // output {a:1, b:2, c:3, d:4}
+
+      //object inside on an array
+
+      const todos = [
+        { id: 1, name: 'buy Milk' },
+        { id: 2, name: 'buy beer' },
+        { id: 3, name: 'buy food' },
+      ];
+
+      x = todos;
+      x = todos[0];
+      x = todos[1].name; //output buy beer
+      console.log(x);
+    </script>
+  </body>
+</html>
