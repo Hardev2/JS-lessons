@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Arrow function</h1>
+
+    <script>
+      //Regular arrow function
+
+      const add = (a, b) => {
+        return a + b;
+      };
+      console.log(add(5, 2));
+
+      //Shorten arrow function
+      const subtract = (a, b) => a - b;
+
+      console.log(subtract(10, 5));
+
+      //Returning an object
+
+      const createObj = () => ({
+        name: 'brad',
+      });
+
+      console.log(createObj());
+
+      const numbers = [1, 2, 3, 4, 5, 6];
+
+      numbers.forEach((n) => {
+        console.log(n);
+      });
+
+      numbers.forEach((n) => console.log(n));
+    </script>
+  </body>
+</html>

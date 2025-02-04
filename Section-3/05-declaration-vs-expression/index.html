@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Declaration vs Expression</h1>
+
+    <script>
+      //function Declaration
+      function addDollarSign(value) {
+        return '$' + value;
+      }
+      console.log(addDollarSign(100));
+
+      //function Expression
+
+      const addPlusSign = function (value) {
+        return '+' + value;
+      };
+
+      console.log(addPlusSign(100));
+    </script>
+  </body>
+</html>

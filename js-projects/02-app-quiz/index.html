@@ -22,50 +22,75 @@
     </div>
 
     <script>
+      //Step 1 set our questions and answers
+      //lets use array and inside of array is object
+
       const questions = [
         {
-          question: 'Which is largest animal in the world?',
+          question: 'Which alcohol have strongest volume?',
           answers: [
-            { text: 'Shark', correct: false },
-            { text: 'Blue whale', correct: true },
-            { text: 'Elephant', correct: false },
-            { text: 'Giraffe', correct: false },
+            { text: 'Emperador', correct: false },
+            { text: 'The Bar', correct: false },
+            { text: 'Gin', correct: true },
+            { text: 'Gsm', correct: false },
           ],
         },
         {
-          question: 'Which is the smallest country in the world?',
+          question: 'What fast food is famous in the philippines?',
           answers: [
-            { text: 'Vatican City', correct: true },
-            { text: 'Bhutan', correct: false },
-            { text: 'Nepal', correct: false },
-            { text: 'Shri Lanka', correct: false },
+            { text: 'Jolibee', correct: true },
+            { text: 'KFC', correct: false },
+            { text: 'Chowking', correct: false },
+            { text: 'Mcdonald', correct: false },
           ],
         },
         {
-          question: 'Who is the greatest Robot inventor?',
+          question: 'Which planet is closest to the sun?',
           answers: [
-            { text: 'Mark Zuckerberg', correct: false },
-            { text: 'Steve Job', correct: false },
-            { text: 'Ellon Musk', correct: true },
-            { text: 'John Snow', correct: false },
+            { text: 'Earth', correct: false },
+            { text: 'Mars', correct: false },
+            { text: 'Mercury', correct: true },
+            { text: 'Venus', correct: false },
           ],
         },
         {
-          question: 'Greatest hit man in the movie?',
+          question: 'What is the largest ocean on Earth?',
           answers: [
-            { text: 'John Wick', correct: true },
-            { text: 'Maria Smith', correct: false },
-            { text: 'Jacky', correct: false },
-            { text: 'Conan', correct: false },
+            { text: 'Atlantic Ocean', correct: false },
+            { text: 'Indian Ocean', correct: false },
+            { text: 'Pacific Ocean', correct: true },
+            { text: 'Arctic Ocean', correct: false },
+          ],
+        },
+        {
+          question: 'Which element has the chemical symbol O?',
+          answers: [
+            { text: 'Oxygen', correct: true },
+            { text: 'Osmium', correct: false },
+            { text: 'Gold', correct: false },
+            { text: 'Olivine', correct: false },
+          ],
+        },
+        {
+          question: 'Who painted the Mona Lisa?',
+          answers: [
+            { text: 'Vincent van Gogh', correct: false },
+            { text: 'Leonardo da Vinci', correct: true },
+            { text: 'Pablo Picasso', correct: false },
+            { text: 'Claude Monet', correct: false },
           ],
         },
       ];
+      //Step 2 you need to get the id of our quiz
+      //let declare variable to store our id
 
       const questionElement = document.getElementById('question');
       const answerButtons = document.getElementById('answer-buttons');
       const nextButton = document.getElementById('next-btn');
 
-      //current index of question is 0 first question
+      //let create a function to start the quiz
+      //but before that let's declare a variable to our current question index and score
+
       let currentQuestionIndex = 0;
       let score = 0;
 
@@ -73,27 +98,34 @@
         currentQuestionIndex = 0;
         score = 0;
         nextButton.innerHTML = 'Next';
+
+        //Inside of this function there's another function which is the show question
         showQuestion();
       }
-
+      //this function will show the question and also the choices
       function showQuestion() {
         resetState();
-        let currentQuestion = questions[currentQuestionIndex]; //this will be get the curren question which is in index 0
-        let questionNo = currentQuestionIndex + 1; // by adding + 1 so that the start of question is number 1.
+        let currentQuestion = questions[currentQuestionIndex];
+        let questionNo = currentQuestionIndex + 1;
         questionElement.innerHTML =
-          questionNo + '. ' + currentQuestion.question; //this will be display the current question that being get in the array
+          questionNo + '. ' + currentQuestion.question;
+
+        //lets display the choices
 
         currentQuestion.answers.forEach((answer) => {
-          const button = document.createElement('button'); // this will create a button tag.
-          button.innerHTML = answer.text; // call the parameter answer and then concat it with the answer text inside of an array.
+          const button = document.createElement('button');
+          button.innerHTML = answer.text;
           button.classList.add('btn');
-          answerButtons.appendChild(button); // make the button be children in the answer-button div in the html
+          answerButtons.appendChild(button);
+
           if (answer.correct) {
             button.dataset.correct = answer.correct;
           }
           button.addEventListener('click', selectAnswer);
         });
       }
+
+      //Step 3 create a resetState
 
       function resetState() {
         nextButton.style.display = 'none';
@@ -119,7 +151,6 @@
         });
         nextButton.style.display = 'block';
       }
-
       function showScore() {
         resetState();
         questionElement.innerHTML = `Your score ${score} out of ${questions.length}!`;
