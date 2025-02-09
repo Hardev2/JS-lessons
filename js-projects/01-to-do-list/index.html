@@ -27,39 +27,34 @@
 
       function addTask() {
         if (inputBox.value === '') {
-          alert('You must write something!');
+          alert('You must write something');
         } else {
-          let li = document.createElement('li'); // it will create an html tag named li
-          li.innerHTML = inputBox.value; // this line will create an text using innerHTML which is the value, value = text
-          listContainer.appendChild(li); // so this line will going to be a child to the ul which is the ul, ul will be the parent
+          let li = document.createElement('li');
+          li.innerHTML = inputBox.value;
+          listContainer.appendChild(li);
           let span = document.createElement('span');
           span.innerHTML = '\u00d7';
           li.appendChild(span);
         }
         inputBox.value = '';
-        saveData();
+        saveTask();
       }
 
-      listContainer.addEventListener(
-        'click',
-        function (e) {
-          if (e.target.tagName === 'LI') {
-            e.target.classList.toggle('checked'); // if the user toggle the li it will add the class checked.
-            saveData();
-          } else if (e.target.tagName === 'SPAN') {
-            e.target.parentElement.remove(); // if click the span it will remove the parentElement which is the li
-            saveData();
-          }
-        },
-        false
-      );
+      listContainer.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') {
+          e.target.classList.toggle('checked');
+          saveTask();
+        } else if (e.target.tagName === 'SPAN') {
+          e.target.parentElement.remove();
+          saveTask();
+        }
+      });
 
-      function saveData() {
-        localStorage.setItem('data', listContainer.innerHTML); //save the data using the local storage set item.
+      function saveTask() {
+        localStorage.setItem('data', listContainer.innerHTML);
       }
-
       function showTask() {
-        listContainer.innerHTML = localStorage.getItem('data'); // display the data using the local storage get item.
+        listContainer.innerHTML = localStorage.getItem('data');
       }
 
       showTask();
