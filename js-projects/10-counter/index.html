@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylec.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="count_container">
+        <h1 id="count">0</h1>
+        <div class="button_wrapper">
+          <button onclick="increment()">Increment</button>
+          <button onclick="reset()">Reset</button>
+          <button onclick="decrement()">Decrement</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let count = document.getElementById('count');
+      let countValue = 0;
+      function increment() {
+        countValue += 1;
+        count.innerHTML = countValue;
+      }
+
+      function decrement() {
+        countValue += -1;
+        count.innerHTML = countValue;
+      }
+
+      function reset() {
+        countValue = 0;
+        count.innerHTML = countValue;
+      }
+    </script>
+  </body>
+</html>
