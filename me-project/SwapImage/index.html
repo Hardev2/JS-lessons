@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover to Show GIF</title>
+    <style>
+      .image-container img {
+        width: 300px;
+        height: 200px;
+        transition: opacity 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      /* Change image source on hover */
+      .image-container img.static {
+        position: absolute;
+      }
+
+      .image-container:hover .static {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="image-container"
+      style="position: relative; display: inline-block">
+      <img src="mockup.jpg" alt="Static" class="static" />
+      <img src="Branding Card GIF by Mediamodifier.gif" alt="GIF" class="gif" />
+    </div>
+  </body>
+</html>

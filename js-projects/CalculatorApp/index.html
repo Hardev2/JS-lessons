@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calculator">
+        <div class="display">
+          <input type="text" id="display" />
+        </div>
+        <div class="buttons">
+          <button type="button" onclick="clearDisplay()">AC</button>
+          <button type="button" onclick="deleteValue()">DE</button>
+          <button type="button" onclick="displayValue('.')">.</button>
+          <button type="button" onclick="displayValue('/')">/</button>
+        </div>
+        <div class="buttons">
+          <button type="button" onclick="displayValue('7')">7</button>
+          <button type="button" onclick="displayValue('8')">8</button>
+          <button type="button" onclick="displayValue('9')">9</button>
+          <button type="button" onclick="displayValue('*')">*</button>
+        </div>
+        <div class="buttons">
+          <button type="button" onclick="displayValue('4')">4</button>
+          <button type="button" onclick="displayValue('5')">5</button>
+          <button type="button" onclick="displayValue('6')">6</button>
+          <button type="button" onclick="displayValue('+')">+</button>
+        </div>
+        <div class="buttons">
+          <button type="button" onclick="displayValue('1')">1</button>
+          <button type="button" onclick="displayValue('2')">2</button>
+          <button type="button" onclick="displayValue('3')">3</button>
+          <button type="button" onclick="displayValue('-')">-</button>
+        </div>
+        <div class="buttons">
+          <button type="button" onclick="displayValue('00')">00</button>
+          <button type="button" onclick="displayValue('0')">0</button>
+          <button type="button" onclick="calculate()" class="equal">=</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let display = document.getElementById('display');
+
+      function displayValue(value) {
+        display.value += value;
+      }
+
+      function clearDisplay() {
+        display.value = '';
+      }
+
+      function deleteValue() {
+        display.value = display.value.slice(0, -1);
+      }
+
+      function calculate() {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = 'error';
+        }
+      }
+    </script>
+  </body>
+</html>
